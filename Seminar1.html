@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Un titlu</title>
+</head>
+<body>
+    <h1>Exemple HTML</h1>
+    <h2>Elemente text</h2>
+
+    <p>
+        <em>Ana</em> are <br><strong>trei</strong>
+        mere.
+    </p>
+
+    <p>
+        <a href="https://ase.ro" target="_blank">
+            <p>
+                a&lt;b
+                Maria&amp;Ion
+            </p>
+            <h2>Text performatat</h2>
+        </a>
+    </p>
+
+
+    <pre> 
+    Ana are trei
+    mere.
+    </pre>
+
+    <ul>
+        <li>Elementul 1</li>
+        <li>
+            Elementul 2
+            <p>
+                a&lt;b
+                Maria&amp;Ion
+            </p>
+        </li>
+        <li>Elementul 3</li>
+    </ul>
+
+    <table border="1">
+        <caption>Lista perosane</caption>
+        <thead>
+            <tr>
+                <th>Cod</th>
+                <th>Nume</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th rowspan="2">001</th><td>Ion</td></tr>
+            <tr><th>002</th><td>Maria</td></tr>
+        </tbody>
+        <tfoot>
+            <tr><td colspan="2">2 persoane</td></tr>
+        </tfoot>
+    </table>
+
+    <!--http://ase.softmentor.ro:81/Home/ExecutaOperatie
+        ?operand1=2&operand2=3&operatie=plus&raspunsText=true-->
+    <!-- http://ase.softmentor.ro:81/Home/ExecutaOperatie -->
+    <!--Metode acceptate: GET SI POST -->
+    <!--
+        operand1 -un numar
+        operand2 -un numar
+        operatie - plus / minus / inmultit / impartit
+        raspunstText - true / false
+    -->
+    <form method="get" action="http://ase.softmentor.ro:81/Home/ExecutaOperatie">
+        <input name="operand1">
+        <select name="operatie">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+        </select>
+        <input name="operand2">
+        <br>
+        <input type="checkbox" id="mirabela" name="raspunsText" value="true">
+        <label for="mirablea">Raspuns text</label>
+        <br>
+        <input type="submit" value="Trimite">
+    </form>
+
+</body>
+</html>

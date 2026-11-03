@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>Selector de culoare HSL</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; font-size: 11pt; }
+        #proba { width: 504px; height: 120px; border: 1px solid gray; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        .patrat { display: inline-block; width: 20px; height: 20px; margin: 1px; border: 1px solid silver; }
+        input[type="range"] { display: block; width: 504px; }
+        th, td { padding: 4px 12px; text-align: left; }
+        td { font-family: monospace; }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <h1>Selector de culoare HSL</h1>
+    <div id="proba"></div>
+    <div id="benzi">
+        <label for="h">Nuanța (H): <span id="vh"></span>°</label>
+        <div id="bandah"></div>
+        <input type="range" id="h" min="0" max="360">
+        <label for="s">Saturația (S): <span id="vs"></span>%</label>
+        <div id="bandas"></div>
+        <input type="range" id="s" min="0" max="100">
+        <label for="l">Luminozitatea (L): <span id="vl"></span>%</label>
+        <div id="bandal"></div>
+        <input type="range" id="l" min="0" max="100">
+    </div>
+    <table>
+        <tr>
+            <th>Culoarea aleasă, în HSL</th>
+            <td id="txtHsl"></td>
+        </tr>
+        <tr>
+            <th>Cum o păstrează browserul</th>
+            <td id="txtRgb"></td>
+        </tr>
+    </table>
+</body>
+</html>

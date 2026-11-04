@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Grafic</title>
+    
+    <script type="text/javascript">
+        let canvas, W, H, context;
+        let V = [8, 4, 6, 4];
+
+        function desenare() {
+            context.fillStyle = 'silver';
+            context.fillRect(0, 0, W, H);
+
+            const n = V.length, w = W / (n-1), f = H*0.9 / Math.max(...V);
+
+            context.beginPath();
+            context.moveTo(0, H);
+
+            for (let i = 0; i < n; i++) {
+                xi = i*w;
+                yi = H-V[i] * f;
+
+                context.lineTo(xi, yi);
+
+            }
+            context.lineTo(W, H);
+            context.closePath();
+
+            context.fillStyle = 'hsla(200,100%,50%,0.3)';
+            context.strokeStyle = 'coral';
+            context.fill();
+            context.stroke();
+
+        }
+        function aplicatie() {
+            canvas = document.querySelector(' canvas');
+            W = canvas.width; H = canvas.height;
+            context = canvas.getContext('2d');
+
+            desenare();
+
+            //console.log(`${W} coloane x ${H} linii`, context);
+
+            //context.lineWidth = 6;
+            //context.fillStyle = 'hsla(200,100%,50%,0.3)';
+            //context.strokeStyle = 'coral';
+
+            //context.fillRect(W / 2, H / 2, W / 2, H / 2);
+            //context.strokeRect(W / 2, H / 2, W / 2 - 3, H / 2 - 3);
+
+            //context.strokeStyle = 'hsla(140,70%,30%,0.3)';
+            //context.moveTo(0, H / 2);
+            //context.lineTo(W / 2, H / 2);
+            //context.lineTo(W / 4, 0);
+            //context.closePath() // <-> context.lineTo(0,h/2);
+            //context.stroke();
+
+            ////context.moveTo(W / 4 + H / 4, 3 * H / 4);
+            //context.beginPath();
+            //context.arc(W / 4, 3 * H / 4, H / 4, 0, 2 * Math.PI);
+            //context.stroke();
+
+            //context.fillStyle = 'black';
+            //context.font = 'bold 20pt Tahoma';
+            //context.textAlign = 'center';
+            //context.textBaseline = 'middle';
+            //context.fillText("Test", W / 4, 3 * H / 4);
+        }
+        document, addEventListener('DOMContentLoaded', aplicatie);
+       </script>
+    
+</head>
+<body>
+    
+    <canvas width = "600" height = "400"
+            style = "border:1px solid black;">
+    </canvas>
+</body>
+</html>

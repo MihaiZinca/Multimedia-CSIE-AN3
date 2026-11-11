@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- Se pozitioneaz amai intai conform top si left si apoi se muta conform margin-left si margin-top -->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Imagine</title>
+    <style text/css>
+        html, body{
+            background-color: gray;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas{
+            border: 3px solid black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -400px; 
+            margin-top: -300px;
+        }
+    </style>
+    <script type="text/javascript">
+        let imagine,canvas, W, H, context,mouseX=0,mouseY=0;
+
+        function afisare()
+        {
+            context.drawImage(imagine, 0, 0);
+            context.fillStyle='red';
+            context.font='bold 20px Arial';
+            context.fillText(`${mouseX}, ${mouseY}`, 10, 30);
+
+            const imageData=context.getImageData(0,0,W,H);
+            const v=imageData.data;
+
+            for(let y=0;y<H;y++)
+                for(let x=0;x<W;x++)
+                {
+                    const i=y*W*4+x*4;
+                    if(x==mouseX || y==mouseY)
+                    {
+                        v[i+0]=255;
+                    }
+                    
+                    let distanta=Math.sqrt((mouseX-x)*(mouseX-x)+(mouseY-y)*(mouseY-y));
+                    
+                    if(distanta<180)
+                    {
+                        v[i+3]=255-distanta;
+                    }
+                    else{
+                        v[i]=v[i+1]=v[i+2]=(v[i]+v[i+1]+v[i+2])/3;
+                        v[i+3]=Math.random()*180;
+                    }
+                }
+            context.putImageData(imageData,0,0);
+        }
+
+        function miscare(e){
+                mouseX=Math.round(e.x-canvas.getBoundingClientRect().x);
+                mouseY=Math.round(e.y-canvas.getBoundingClientRect().y);
+            }
+
+        function aplicatie() {
+            canvas = document.querySelector('canvas');
+            W = canvas.width; H = canvas.height;
+            context = canvas.getContext('2d');
+
+            canvas.addEventListener('mousemove',miscare);
+
+            imagine=document.createElement('img');
+            imagine.src='penguins.jpg';
+                imagine.addEventListener('load',e =>{
+                    setInterval(afisare,1000/30);
+                }
+            );
+            
+        }
+    
+        document.addEventListener('DOMContentLoaded', aplicatie);
+
+    </script>
+</head>
+<body>
+    <canvas width="800" height="600">
+        
+    </canvas>
+</body>
+</html>
